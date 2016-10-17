@@ -1,4 +1,5 @@
 ﻿using Ninject_Sample.Interfaces;
+using System;
 
 namespace Ninject_Sample
 {
@@ -7,6 +8,9 @@ namespace Ninject_Sample
         private IDBConection dbConection;
         public DataAnalyzer(IDBConection dbConection)
         {
+            if (dbConection == null)
+                throw new ArgumentNullException(nameof(dbConection));
+
             this.dbConection = dbConection;
         }
 
